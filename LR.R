@@ -5,7 +5,10 @@ imputer<-function(newMat,xyz)
   xyz<-round(as.matrix(dist(xyz))/1000,1)
   C<-cor(newMat,use='pairwise.complete.obs')
   metrics<-matrix(NA,1,6)
-  while(sum(is.na(newMat))>0)
+  trial<-1
+  missingCounts<-c(prod(dim(newMat)),sum(is.na(newMat)))
+  while(all(c(abs(missingCounts[trial+1]-missingCounts[trial])>0 ,
+              missingCounts[trial+1] !=0)))
   {
     for(i in 1:ncol(newMat))
     {
@@ -46,6 +49,8 @@ imputer<-function(newMat,xyz)
       }
       newMat[,i]<-y
     }
+    trial<-trial+1
+    missingCounts<-c(missingCounts,sum(is.na(newMat)))
   }
   metrics<-metrics[-1,]
   return(list(metrics=metrics,newMat=newMat))
