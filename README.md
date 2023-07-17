@@ -1,7 +1,9 @@
-This document goes through the steps to retrive meteorological time series using [weathercan](https://github.com/ropensci/weathercan/) R package. Retrived data downloaded from `weathercan` can be digested to a [missing value imputation tool](https://rezgar-arabzadeh.shinyapps.io/missingValuesImputation/) devised for filling any missing values and generating [Raven](http://raven.uwaterloo.ca/)  complient `.rvt` files.
+This document provides a comprehensive guide on how to retrieve meteorological time series using the `weathercan` R package. The `weathercan` package can be found at [weathercan](https://github.com/ropensci/weathercan/). Once you have obtained the data from `weathercan`, you can use it with a missing value imputation tool, available at [missing value imputation tool](https://rezgar-arabzadeh.shinyapps.io/missingValuesImputation/). This tool is designed to fill in any gaps in the data, ensuring a complete dataset. Moreover, the imputed time series can be transformed into `.rvt` files that comply with [Raven Hydrologic Framework](http://raven.uwaterloo.ca/) input file format.
+
 
 ## Based on proximity
-In this method station(s) are searched based on a given proximity and a radious search. So, user is required to provide a `la` and `lon` coordinates in decimal DMS format and a radious search (Km):
+In this approach, the method involves searching for station(s) based on a specified proximity and a radius for the search. To initiate the search, the user must provide latitude (lat) and longitude (lon) coordinates in decimal DMS format, along with a radius value (in kilometers).
+
 
 ``` r
 if(require("weathercan")) install.packages("weathercan",repos = "https://ropensci.r-universe.dev")
